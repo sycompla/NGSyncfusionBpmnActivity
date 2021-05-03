@@ -11,6 +11,9 @@ import { DiagramComponent, Diagram, BpmnDiagrams, NodeModel, BpmnShapeModel } fr
           <e-node id='node4' [offsetX]=440 [offsetY]=150 [shape]='shape3'></e-node>
           <e-node id='node5' [offsetX]=550 [offsetY]=150 [shape]='shape4'></e-node>
           <e-node id='node6' [offsetX]=660 [offsetY]=150 [shape]='shape5'></e-node>
+          <e-node id='node7' [offsetX]=110 [offsetY]=350 [shape]='shape7'></e-node>
+          <e-node id='node8' [offsetX]=260 [offsetY]=350 [shape]='shape8'></e-node>
+          <e-node id='node9' [offsetX]=420 [offsetY]=350 [shape]='shape9'></e-node>
         </e-nodes>
     </ejs-diagram>`,
   encapsulation: ViewEncapsulation.None
@@ -99,6 +102,54 @@ export class AppComponent {
       activity: 'Task',
       task: {
         type: 'Manual'
+      }
+    }
+  };
+  public shape7: BpmnShapeModel = {
+    type: 'Bpmn',
+    shape: 'Activity',
+    activity: {
+      activity: 'SubProcess',
+      subProcess: {
+        collapsed: true
+      }
+    }
+  };
+  public shape8: BpmnShapeModel = {
+    type: 'Bpmn',
+    shape: 'Activity',
+    activity: {
+      activity: "SubProcess",
+      subProcess: {
+        type: "Event",
+        events: [
+          {
+            event: 'Start',
+            trigger: 'Link'
+          }
+        ]
+      }
+    }
+  };
+  public shape9: BpmnShapeModel = {
+    type: 'Bpmn',
+    shape: 'Activity',
+    activity: {
+      activity: "SubProcess",
+      subProcess: {
+        type: "Transaction",
+        events: [
+          {
+            event: 'Start',
+            trigger: 'Signal',
+            offset: { x: 0.25, y: 1 }
+          },
+          {
+            event: 'Start',
+            trigger: 'Timer',
+            offset: { x: 0.75, y: 1 }
+          }
+        ]
       }
     }
   };
